@@ -11,25 +11,31 @@ banned(list) = ["hit"]
 """
 
 import re
+import collections 
+
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: list[str]) -> str:
         sum_dict = {}
         p = re.compile("[\W]")
         para_list= p.sub(" ",paragraph).lower().split()
 
+
+        sum_dict = collections.defaultdict(int)
         for para in para_list:
-            if para in sum_dict.keys():
+            if para not in banned:
                 sum_dict[para] += 1
-            else : 
-                sum_dict[para] = 1
-
-        for ban in banned:
-            if ban in sum_dict.keys():
-                del sum_dict[ban]
-
+                
         common_word = [k for k, v in sum_dict.items() if v == max(sum_dict.values())]
         return common_word[0]
     
+
+    def mostCommonWord_book(self, paragraph: str, banned: list[str]) -> str:
+        words = [word for word in re.sub(r'[^\w]',' ', paragraph).lower().split() if word not in banned]
+        counts = collections.Counter(words)
+        return counts.most_common(1)[0][0]
+
+
+
 paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
 banned = ["hit"]
 
@@ -44,3 +50,18 @@ print(s.mostCommonWord(paragraph, banned))
 - ban할 단어를 딕셔너리에서 삭제해주기
 - sum_dict에 있는 값들 중 max값을 찾아서 뽑아내기 
 '''
+
+''''
+책 문제 풀이 방식과 내 방식과 다른점
+- 각 단어의 리스트를 반들 때 제외 단어를 넣어줌 
+- 딕셔너리로 만드는 방식을 모듈을 통해 만듬(collections 모듈)
+    - defaultdict(int) : 키 존재 유무를 확인할 필요 없이 즉시 +1 수행가능
+        counts = collections.defaultdict(int)
+        for word in words:
+            counts[word] += 1
+    - Counter : 개수 처리 -> most_common 
+        counts = collections.Counter(words)
+        counts.most_common(1)[0][0]
+'''
+
+
