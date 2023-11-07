@@ -12,6 +12,8 @@ def p_func(num):
 prime_num = [2]
 
 def prim_num(n):
+    if n == 1:
+        return False
     r_n = int(n**0.5) +1
     for i in range(2, r_n):
         if n % i == 0:
