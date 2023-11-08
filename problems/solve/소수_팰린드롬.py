@@ -70,7 +70,7 @@ while Flag:
         
         
 #     prime_num.append(now)
-#     prime_func(now)
+#     prime_func(now)  
 
 # prime_func(2)
 # print(prime_num[-1])
