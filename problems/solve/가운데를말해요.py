@@ -7,17 +7,19 @@ N : 외치는 정수의 개수 (1<= N <= 100,000)
 
 N = int(input())
 num_list = []
-for i in range(N):
-    num = int(input())
-    num_list.append(num)
-    num_len = len(num_list)
-    num_list.sort()
-    if num_len == 1:
-        print(num)
-    elif num_len%2 == 0:
-        print(num_list[int((num_len/2) -1)])
-    elif num_len%2 == 1:
-        print(num_list[int(num_len/2)])
+# for i in range(N):
+#     num = int(input())
+#     num_list.append(num)
+#     num_len = len(num_list)
+#     num_list.sort()
+#     if num_len == 1:
+#         print(num)
+#     elif num_len%2 == 0:
+#         print(num_list[int((num_len/2) -1)])
+#     elif num_len%2 == 1:
+#         print(num_list[int(num_len/2)])
 
-# print(4/2)
+
+        
+
         
